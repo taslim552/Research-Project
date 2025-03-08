@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_project/screens/create/category_card.dart';
 import 'package:my_project/shared/shared_text.dart';
 import 'package:my_project/shared/styled.button.dart';
 import 'package:my_project/theme.dart';
+import 'package:my_project/models/project_category.dart';
 
 class Create extends StatefulWidget {
   const Create({super.key});
@@ -10,7 +12,6 @@ class Create extends StatefulWidget {
   @override
   State<Create> createState() => _CreateState();
 }
-
 class _CreateState extends State<Create> {
   final _titleController=TextEditingController();
   final _descriptionController=TextEditingController();
@@ -33,7 +34,8 @@ class _CreateState extends State<Create> {
       ),
       body:Container(
         padding: EdgeInsets.symmetric(vertical: 10,horizontal: 20),
-        child:Column(
+        child:SingleChildScrollView(
+          child:Column(
           children: [
             Center(
               child:Icon(
@@ -75,6 +77,23 @@ class _CreateState extends State<Create> {
             SizedBox(
                 height:20,
                 ),
+            SizedBox(
+              height: 30,),
+            Center(
+              child: Icon(
+                Icons.code,
+                color: AppColors.primaryColor,
+                ),
+              ),
+            Center(
+                child:StyledText('Choose Category'),
+                ),
+            SizedBox(
+              height: 30,),
+            CategoryCard(projectcategory:ProjectCategory.ai),
+            CategoryCard(projectcategory:ProjectCategory.cybersecurity),
+            CategoryCard(projectcategory:ProjectCategory.wn),
+            CategoryCard(projectcategory:ProjectCategory.robotics),
             Center
             (child: StyledButton(
               onPressed: handleSubmit, 
@@ -83,6 +102,8 @@ class _CreateState extends State<Create> {
           ],
           )
       )
+    
+    )
     );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:my_project/models/category.dart';
+import 'package:my_project/models/project_category.dart';
 
 class Skill{
   final String id;

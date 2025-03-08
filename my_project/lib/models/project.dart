@@ -1,8 +1,6 @@
 import 'package:my_project/models/stats.dart';
-// import 'package:my_project/models/ProjectCategory.dart';
+import 'package:my_project/models/project_Category.dart';
 import 'package:my_project/models/skill.dart';
-import 'package:my_project/models/category.dart';
-
 
 class Project with Stats{
 

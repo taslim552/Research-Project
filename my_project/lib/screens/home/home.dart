@@ -3,7 +3,7 @@ import 'package:my_project/screens/home/project_card.dart';
 import 'package:my_project/shared/shared_text.dart';
 import 'package:my_project/shared/styled.button.dart';
 import 'package:my_project/models/project.dart';
-
+import 'package:my_project/screens/create/create.dart';
 class Home extends StatefulWidget {
    const Home({super.key});
   
@@ -21,13 +21,14 @@ class _HomeState extends State<Home> {
         title:StyledTitle('Your Projects'),
         centerTitle:true,
       ),
+      
       body:Container(
         padding: EdgeInsets.all(16),
         child:Column(
           children: [
             StyledText('Project List'),
-            StyledHeading('Character List'),
-            StyledTitle('Character List'),
+            SizedBox(height: 20,),
+           
             Expanded(child: 
             ListView.builder(
               itemCount: projects.length,
@@ -36,7 +37,11 @@ class _HomeState extends State<Home> {
               },
             ),),
             StyledButton(
-              onPressed: (){}, 
+              onPressed: (){
+                Navigator.push(
+                  context,MaterialPageRoute(builder:(ctx)=>Create())
+                );
+              }, 
               child: StyledHeading("Create new")),
           ],
 

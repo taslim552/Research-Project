@@ -10,10 +10,11 @@ final Project project;
     return Card(
       child:Padding(
         padding: EdgeInsets.symmetric(horizontal: 24,vertical: 16),
-      child:Row(children: [
+      child:Row(
+        children: [
          Image.asset(
           'assets/img/category/${project.category.image}',
-          width:80),
+          width:70),
         SizedBox(
           width:20,
         ),

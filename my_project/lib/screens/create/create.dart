@@ -7,10 +7,11 @@ import 'package:my_project/shared/styled.button.dart';
 import 'package:my_project/theme.dart';
 import 'package:my_project/models/project_category.dart';
 import 'package:uuid/uuid.dart';
+import 'package:my_project/screens/home/home.dart';
 
 class Create extends StatefulWidget {
   const Create({super.key});
-
+ 
   @override
   State<Create> createState() => _CreateState();
 }
@@ -18,6 +19,7 @@ class _CreateState extends State<Create> {
   final _titleController=TextEditingController();
   final _descriptionController=TextEditingController();
   @override
+   
   void dispose(){
     _titleController.dispose();
     _descriptionController.dispose();
@@ -27,18 +29,46 @@ class _CreateState extends State<Create> {
   void updateProjectCategory(ProjectCategory projectcategory){
     setState((){
       selectedCategory =projectcategory;
-    });
-  }
+    }
+    );}
+    
+  
   @override
   Widget build(BuildContext context) {
     void handleSubmit(){
       if(_titleController.text.trim().isEmpty){
-        print('Title must be empty');
-        return;}
+        showDialog(context: context, 
+        builder: (ctx){
+          return AlertDialog(
+            title: StyledHeading('Missing project Title'),
+            content: StyledText('Please enter a project Title'),
+            actions: [
+              StyledButton(onPressed: (){
+                Navigator.pop(ctx);
+              }, child: StyledHeading('Close'))
+            ],
+            actionsAlignment: MainAxisAlignment.center,
+          );
+        });
+        return;
+        }
       if(_descriptionController.text.trim().isEmpty){
-      print('Description must not be empty');
-      return;   
-          }
+       showDialog(context: context, 
+        builder: (ctx){
+          return AlertDialog(
+            title: StyledHeading('Missing Description'),
+            content: StyledText('Please Enter  Project Description'),
+            actions: [
+              StyledButton(onPressed: (){
+                Navigator.pop(ctx);
+              }, child: StyledHeading('Close'))
+            ],
+            actionsAlignment: MainAxisAlignment.center,
+          );
+        });
+        return;
+        }
+     
       
       projects.add(Project(title: _titleController.text.trim(), description: _descriptionController.text.trim(), category: selectedCategory, id: const Uuid().v4(),
       ));

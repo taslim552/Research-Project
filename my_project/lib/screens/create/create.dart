@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_project/models/project.dart';
 import 'package:my_project/screens/create/category_card.dart';
 import 'package:my_project/shared/shared_text.dart';
 import 'package:my_project/shared/styled.button.dart';
 import 'package:my_project/theme.dart';
 import 'package:my_project/models/project_category.dart';
+import 'package:uuid/uuid.dart';
 
 class Create extends StatefulWidget {
   const Create({super.key});
@@ -16,15 +18,30 @@ class _CreateState extends State<Create> {
   final _titleController=TextEditingController();
   final _descriptionController=TextEditingController();
   @override
+  void dispose(){
+    _titleController.dispose();
+    _descriptionController.dispose();
+    super.dispose();
+  }
+  ProjectCategory selectedCategory=ProjectCategory.ai;
+  void updateProjectCategory(ProjectCategory projectcategory){
+    setState((){
+      selectedCategory =projectcategory;
+    });
+  }
+  @override
   Widget build(BuildContext context) {
     void handleSubmit(){
       if(_titleController.text.trim().isEmpty){
         print('Title must be empty');
-        if(_descriptionController.text.trim().isEmpty){
-          print('Description must not be empty');       }
-      }
-      print(_titleController.text);
-      print(_descriptionController.text);
+        return;}
+      if(_descriptionController.text.trim().isEmpty){
+      print('Description must not be empty');
+      return;   
+          }
+      
+      projects.add(Project(title: _titleController.text.trim(), description: _descriptionController.text.trim(), category: selectedCategory, id: const Uuid().v4(),
+      ));
 
     }
     return Scaffold(
@@ -90,10 +107,10 @@ class _CreateState extends State<Create> {
                 ),
             SizedBox(
               height: 30,),
-            CategoryCard(projectcategory:ProjectCategory.ai),
-            CategoryCard(projectcategory:ProjectCategory.cybersecurity),
-            CategoryCard(projectcategory:ProjectCategory.wn),
-            CategoryCard(projectcategory:ProjectCategory.robotics),
+            CategoryCard( selected: selectedCategory==ProjectCategory.ai, onTap:updateProjectCategory,projectcategory:ProjectCategory.ai),
+            CategoryCard(selected: selectedCategory==ProjectCategory.cybersecurity,onTap:updateProjectCategory,projectcategory:ProjectCategory.cybersecurity),
+            CategoryCard(selected: selectedCategory==ProjectCategory.wn,onTap:updateProjectCategory,projectcategory:ProjectCategory.wn),
+            CategoryCard(selected: selectedCategory==ProjectCategory.robotics,onTap:updateProjectCategory,projectcategory:ProjectCategory.robotics),
             Center
             (child: StyledButton(
               onPressed: handleSubmit, 

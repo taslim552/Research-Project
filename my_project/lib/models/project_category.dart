@@ -1,5 +1,4 @@
 enum ProjectCategory{
-  
    ai(
     title:"Artificial Intelligence",
     description: "Cutting edge research on AI and ML",

@@ -7,7 +7,6 @@ import 'package:my_project/shared/styled.button.dart';
 import 'package:my_project/theme.dart';
 import 'package:my_project/models/project_category.dart';
 import 'package:uuid/uuid.dart';
-import 'package:my_project/screens/home/home.dart';
 
 class Create extends StatefulWidget {
   const Create({super.key});

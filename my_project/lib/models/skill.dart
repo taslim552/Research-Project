@@ -16,7 +16,7 @@ final List<Skill> allSkills=[
   Skill(
     id: '1',
     name: 'Machine Learning Algorithm',
-    image: 'Machine_Learning_Algorithm.jpg',
+    image: 'nn.jpg',
     projectCategory: ProjectCategory.ai),
   Skill(
     id: '2',

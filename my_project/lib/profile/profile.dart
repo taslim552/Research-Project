@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/profile/skill_list.dart';
 import 'package:my_project/profile/stats_table.dart';
 import 'package:my_project/shared/shared_text.dart';
 import 'package:my_project/models/project.dart';
+import 'package:my_project/shared/styled.button.dart';
 import 'package:my_project/theme.dart';
 class Profile extends StatelessWidget {
   const Profile({super.key,required this.project});
@@ -46,12 +48,30 @@ class Profile extends StatelessWidget {
                       alignment: Alignment.center,
                       child: Column(
                         children: [
-                          StatsTable(project),SkillList(project),
+                          StatsTable(project)
+                          ,
+                          SkillList(project),
                         ],
-                      )                    )
-          ],
-        ),
-      ),
-    );
+                      )                  
+                        ),
+
+          StyledButton(
+  onPressed: () {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: StyledHeading('Project Saved Successfully'),
+      showCloseIcon: true,
+      duration: Duration(seconds: 3),
+      backgroundColor: AppColors.secondaryColor,
+    )); // SnackBar
+  },
+  child: StyledHeading('Save Project'), // StyledButton
+),
+SizedBox(
+  height: 20,
+),
+           ],
+         ),
+       )
+       ); 
   }
-}
+  }

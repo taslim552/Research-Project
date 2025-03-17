@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/profile/stats_table.dart';
 import 'package:my_project/shared/shared_text.dart';
 import 'package:my_project/models/project.dart';
 import 'package:my_project/theme.dart';
@@ -36,7 +37,18 @@ class Profile extends StatelessWidget {
                     )
                     )
                 ],)
-            )
+            ),
+            Center(
+                      child: Icon(Icons.code,
+                      color:AppColors.primaryColor,)
+                    ),
+                    Container(
+                      alignment: Alignment.center,
+                      child: Column(
+                        children: [
+                          StatsTable(project)
+                        ],
+                      )                    )
           ],
         ),
       ),

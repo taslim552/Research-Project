@@ -46,7 +46,7 @@ class Profile extends StatelessWidget {
                       alignment: Alignment.center,
                       child: Column(
                         children: [
-                          StatsTable(project)
+                          StatsTable(project),SkillList(project),
                         ],
                       )                    )
           ],

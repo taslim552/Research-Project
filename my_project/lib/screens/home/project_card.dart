@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/profile/profile.dart';
 import 'package:my_project/shared/shared_text.dart';
 import 'package:my_project/theme.dart';
 import 'package:my_project/models/project.dart';
@@ -26,7 +27,12 @@ final Project project;
         ],
         ),
         Expanded(child: SizedBox()),
-        IconButton(onPressed: (){}, icon: Icon(
+        IconButton(onPressed: (){
+          Navigator.push(
+            context, 
+            MaterialPageRoute(
+              builder: (ctx)=>Profile(project:project),));
+        }, icon: Icon(
           Icons.arrow_forward,
           color:AppColors.textColor,
         )

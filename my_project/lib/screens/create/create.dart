@@ -30,11 +30,7 @@ class _CreateState extends State<Create> {
       selectedCategory =projectcategory;
     }
     );}
-    
-  
-  @override
-  Widget build(BuildContext context) {
-    void handleSubmit(){
+     void handleSubmit(){
       if(_titleController.text.trim().isEmpty){
         showDialog(context: context, 
         builder: (ctx){
@@ -71,8 +67,14 @@ class _CreateState extends State<Create> {
       
       projects.add(Project(title: _titleController.text.trim(), description: _descriptionController.text.trim(), category: selectedCategory, id: const Uuid().v4(),
       ));
-
+Navigator.push(
+                  context,MaterialPageRoute(builder:(ctx)=>Home())
+                );
     }
+  
+  @override
+  Widget build(BuildContext context) {
+   
     return Scaffold(
       appBar: AppBar(
         title:StyledTitle('project Creation') ,
